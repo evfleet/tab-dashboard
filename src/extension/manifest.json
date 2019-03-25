@@ -1,0 +1,12 @@
+{
+  "manifest_version": 2,
+  "name": "Tab Extension",
+  "version": "0.0.1",
+  "default_locale": "en",
+  "description": "New tab extension",
+  "chrome_url_overrides": {
+    "newtab": "index.html"
+  },
+  "permissions": ["activeTab"],
+  "minimum_chrome_version": "57"
+}
