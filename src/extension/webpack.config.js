@@ -1,30 +1,32 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 const path = require("path");
-const webpack = require("webpack");
 const CopyPlugin = require("copy-webpack-plugin");
 const HTMLPlugin = require("html-webpack-plugin");
-const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
+const UglifyJSPlugin = require("uglifyjs-webpack-plugin");
 const CSSExtractPlugin = require("mini-css-extract-plugin");
-const OptimizeCSSPlugin = require('optimize-css-assets-webpack-plugin');
-
+const OptimizeCSSPlugin = require("optimize-css-assets-webpack-plugin");
+const { TypedCssModulesPlugin } = require("typed-css-modules-webpack-plugin");
 
 const isDev = process.env.NODE_ENV === "dev";
 
 module.exports = {
   mode: isDev ? "development" : "production",
   devtool: "inline-source-map",
-  entry: "./index.tsx",
+  entry: {
+    main: "./index.tsx",
+    background: "./background.ts"
+  },
   output: {
-    filename: isDev ? "[name].js" : "[name].[hash].js",
+    filename: "[name].js",
     path: path.resolve(__dirname, "../../dist/extension")
   },
   optimization: {
     minimizer: [
-      new UglifyJSPlugin({ 
+      new UglifyJSPlugin({
         uglifyOptions: {
           output: {
-            comments: /@license/i,
-          },
+            comments: /@license/i
+          }
         },
         extractComments: true
       })
@@ -52,25 +54,27 @@ module.exports = {
     ]
   },
   resolve: {
-    // Add `.ts` and `.tsx` as a resolvable extension.
     extensions: [".ts", ".tsx", ".js", ".scss"]
   },
   devServer: {
-    hot: true,
     port: 8080,
     compress: true,
-    contentBase: path.resolve(__dirname, "../../dist/extension")
+    contentBase: path.resolve(__dirname, "../../dist/extension"),
+    writeToDisk: true
   },
   plugins: [
-    new webpack.HotModuleReplacementPlugin(),
     new HTMLPlugin({
-      template: "index.html"
+      template: "index.html",
+      chunks: ["main"]
     }),
     new CopyPlugin(["manifest.json"]),
     new CSSExtractPlugin({
-      filename: isDev ? "[name].css" : "[name].[hash].css",
-      chunkFilename: isDev ? "[id].css" : "[id].[hash].css"
+      filename: "[name].css",
+      chunkFilename: "[id].css"
     }),
-    new OptimizeCSSPlugin()
+    new OptimizeCSSPlugin(),
+    new TypedCssModulesPlugin({
+      globPattern: "**/*.scss"
+    })
   ]
 };
