@@ -38,17 +38,17 @@ module.exports = {
       {
         test: /\.scss$/,
         loader: [
-          isDev ? "style-loader" : CSSExtractPlugin.loader,
-          "css-loader",
+          CSSExtractPlugin.loader,
           {
-            loader: "sass-loader",
+            loader: "css-loader",
             options: {
               modules: true,
               localIdentName: "[name]__[local]___[hash:base64:5]",
               camelCase: true,
               sourceMap: isDev
             }
-          }
+          },
+          "sass-loader"
         ]
       }
     ]
