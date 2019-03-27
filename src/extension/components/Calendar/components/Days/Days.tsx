@@ -11,13 +11,11 @@ const Days: React.SFC<DayProps> = ({ currentMonth }): React.ReactElement => {
   const renderDays = (): React.ReactElement[] => {
     const monthStart = dateFns.startOfMonth(currentMonth);
     const monthEnd = dateFns.endOfMonth(monthStart);
-    const startDate = dateFns.startOfWeek(monthStart);
-    const endDate = dateFns.endOfWeek(monthEnd);
 
     let days = [];
-    let day = startDate;
+    let day = dateFns.startOfWeek(monthStart);
 
-    while (day <= endDate) {
+    while (day <= dateFns.endOfWeek(monthEnd)) {
       days.push(
         <div className={styles.cell} key={`${day.getTime()}`}>
           <span className={styles.date}>
