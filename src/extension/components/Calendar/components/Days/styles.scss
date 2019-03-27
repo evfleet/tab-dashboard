@@ -2,3 +2,27 @@
   display: grid;
   grid-template-columns: repeat(7, 1fr);
 }
+
+.cell {
+  display: flex;
+  justify-content: flex-end;
+  align-content: flex-start;
+  min-height: 4rem;
+  border-left: 1px solid rgba(0, 0, 0, 0.5);
+
+  &:nth-child(7n) {
+    border-right: 1px solid rgba(0, 0, 0, 0.5);
+  }
+
+  &:nth-child(-n + 7) {
+    border-top: 1px solid rgba(0, 0, 0, 0.5);
+  }
+
+  &:nth-child(n - 7) {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.5);
+  }
+}
+
+.date {
+  padding: 0.25rem;
+}

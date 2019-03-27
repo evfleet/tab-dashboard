@@ -12,12 +12,14 @@ const Legend: React.SFC<LegendProps> = ({
 }): React.ReactElement => {
   const renderDays = (): React.ReactElement[] => {
     const days = [];
-    const startDate = dateFns.startOfWeek(currentMonth);
 
     for (let i = 0; i < 7; i++) {
       days.push(
         <div className={styles.label} key={`day-${i}`}>
-          {dateFns.format(dateFns.addDays(startDate, i), "dddd")}
+          {dateFns.format(
+            dateFns.addDays(dateFns.startOfWeek(currentMonth), i),
+            "dddd"
+          )}
         </div>
       );
     }

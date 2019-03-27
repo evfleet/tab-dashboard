@@ -19,8 +19,8 @@ const Days: React.SFC<DayProps> = ({ currentMonth }): React.ReactElement => {
 
     while (day <= endDate) {
       days.push(
-        <div>
-          <span>
+        <div className={styles.cell} key={`${day.getTime()}`}>
+          <span className={styles.date}>
             {dateFns.isSameMonth(day, monthEnd) && dateFns.format(day, "D")}
           </span>
         </div>

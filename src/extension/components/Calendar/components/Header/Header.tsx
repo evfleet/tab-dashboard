@@ -1,6 +1,8 @@
 import React from "react";
 import dateFns from "date-fns";
 
+import styles from "./styles.scss";
+
 interface HeaderProps {
   currentMonth: Date;
   setCurrentMonth: React.Dispatch<React.SetStateAction<Date>>;
@@ -20,17 +22,21 @@ const Header: React.SFC<HeaderProps> = ({
 
   const renderHead = (): React.ReactElement => {
     return (
-      <React.Fragment>
-        <button onClick={prevMonth}>Prev</button>
+      <div className={styles.container}>
+        <button className={styles.button} onClick={prevMonth}>
+          Prev
+        </button>
 
         <span>{dateFns.format(currentMonth, "MMMM YYYY")}</span>
 
-        <button onClick={nextMonth}>Next</button>
-      </React.Fragment>
+        <button className={styles.button} onClick={nextMonth}>
+          Next
+        </button>
+      </div>
     );
   };
 
-  return <header>{renderHead()}</header>;
+  return <header className={styles.header}>{renderHead()}</header>;
 };
 
 export default Header;
