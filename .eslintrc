@@ -13,7 +13,9 @@
       "jsx": true
     }
   },
-  "rules": {},
+  "rules": {
+    "react/prop-types": false
+  },
   "settings": {
     "react": {
       "version": "detect"
