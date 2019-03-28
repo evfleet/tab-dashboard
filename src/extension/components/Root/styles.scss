@@ -1,20 +1,28 @@
 .wrapper {
   display: flex;
+  flex-direction: column;
   align-content: center;
-  justify-content: center;
   width: 100vw;
   height: 100vh;
   overflow: hidden;
+  background: #f1f3f4;
 }
 
 .container {
   display: grid;
   grid-template-rows: 0.4fr 0.6fr;
+  grid-template-columns: 0.4fr 0.6fr;
   grid-template-areas:
     "weather calendar"
     "todos calendar";
+  flex: 1;
   width: 100%;
-  margin: 2rem;
+  max-width: 1000px;
+  margin: 2rem auto;
+
+  @media (max-width: 1000px) {
+    padding: 0 1rem;
+  }
 }
 
 .weatherContainer {
