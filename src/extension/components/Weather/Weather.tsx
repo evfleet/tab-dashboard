@@ -1,10 +1,14 @@
 import React from "react";
 
+import styles from "./styles.scss";
+
 const Weather = (): React.ReactElement => {
   return (
-    <section>
-      <p>Weather</p>
-    </section>
+    <div className={styles.wrapper}>
+      <section className={styles.container}>
+        <p>Weather</p>
+      </section>
+    </div>
   );
 };
 

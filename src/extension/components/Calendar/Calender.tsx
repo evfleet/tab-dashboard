@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 
+import styles from "./styles.scss";
 import Days from "./components/Days";
 import Header from "./components/Header";
 import Legend from "./components/Legend";
@@ -9,11 +10,13 @@ const Calendar = (): React.ReactElement => {
   // const [selectedDate, setSelectedDate] = useState(new Date());
 
   return (
-    <section>
-      <Header currentMonth={currentMonth} setCurrentMonth={setCurrentMonth} />
-      <Legend currentMonth={currentMonth} />
-      <Days currentMonth={currentMonth} />
-    </section>
+    <div className={styles.wrapper}>
+      <section className={styles.container}>
+        <Header currentMonth={currentMonth} setCurrentMonth={setCurrentMonth} />
+        <Legend currentMonth={currentMonth} />
+        <Days currentMonth={currentMonth} />
+      </section>
+    </div>
   );
 };
 

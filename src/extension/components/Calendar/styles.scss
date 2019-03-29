@@ -1,0 +1,12 @@
+@import "../../styles/mixins/box-shadow";
+
+.wrapper {
+  grid-area: calendar;
+}
+
+.container {
+  @include box-shadow(1);
+
+  padding: 1rem;
+  background: #fff;
+}

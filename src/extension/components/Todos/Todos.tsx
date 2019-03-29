@@ -1,10 +1,14 @@
 import React from "react";
 
+import styles from "./styles.scss";
+
 const Todos = (): React.ReactElement => {
   return (
-    <section>
-      <p>Todos</p>
-    </section>
+    <div className={styles.wrapper}>
+      <section className={styles.container}>
+        <p>Todos</p>
+      </section>
+    </div>
   );
 };
 

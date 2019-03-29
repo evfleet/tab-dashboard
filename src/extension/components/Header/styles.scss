@@ -1,10 +1,13 @@
+@import "../../styles/mixins/box-shadow";
+
 .wrapper {
+  @include box-shadow(2);
+
   display: flex;
   justify-content: center;
   width: 100%;
   height: 3rem;
   background: #0277bd;
-  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
 }
 
 .container {

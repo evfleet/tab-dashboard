@@ -12,17 +12,9 @@ const Root = (): React.ReactElement => {
       <Header />
 
       <main className={styles.container}>
-        <div className={styles.weatherContainer}>
-          <Weather />
-        </div>
-
-        <div className={styles.todosContainer}>
-          <Todos />
-        </div>
-
-        <div className={styles.calendarContainer}>
-          <Calendar />
-        </div>
+        <Weather />
+        <Todos />
+        <Calendar />
       </main>
     </div>
   );
